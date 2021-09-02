@@ -35,18 +35,18 @@ export class AppComponent implements OnInit {
       edad: ['', Validators.required],
       pais: ['', Validators.required],
       estado: ['', Validators.required],
-    });;
+    });
 
     this.paisesService.getAllPaises().subscribe(resp => {
       this.paises = resp;
     },
-      error => { console.error(error) }
+      error => { console.error(error); }
     );
 
     this.personaService.getAllPersonas().subscribe(resp => {
       this.personas = resp;
     },
-      error => { console.error(error) }
+      error => { console.error(error); }
     );
 
 
@@ -55,9 +55,9 @@ export class AppComponent implements OnInit {
       this.estadosService.getAllEstadosByPais(value.id).subscribe(resp => {
         this.estados = resp;
       },
-        error => { console.error(error) }
+        error => { console.error(error); }
       );
-    })
+    });
 
   }
 
@@ -65,30 +65,30 @@ export class AppComponent implements OnInit {
   guardar(): void {
     this.personaService.savePersona(this.personaForm.value).subscribe(resp => {
       this.personaForm.reset();
-      this.personas=this.personas.filter(persona=> resp.id!==persona.id);
+      this.personas = this.personas.filter(persona => resp.id !== persona.id);
       this.personas.push(resp);
     },
-      error => { console.error(error) }
-    )
+      error => { console.error(error); }
+    );
   }
 
   eliminar(persona){
-    this.personaService.deletePersona(persona.id).subscribe(resp=>{
-      if(resp===true){
-        this.personas.pop(persona)
+    this.personaService.deletePersona(persona.id).subscribe(resp => {
+      if (resp === true){
+        this.personas.pop(persona);
       }
-    })
+    });
   }
 
   editar(persona){
     this.personaForm.setValue({
-      id:persona.id,
+      id: persona.id,
       nombre: persona.nombre ,
       apellido: persona.apellido ,
       edad: persona.edad,
       pais: persona.pais,
       estado: persona.estado,
-    })
+    });
   }
 
 
