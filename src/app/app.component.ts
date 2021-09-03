@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   personas: any;
 
 
+
   constructor(
     public fb: FormBuilder,
     public estadosService: EstadosService,
