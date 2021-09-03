@@ -9,7 +9,7 @@ WORKDIR /home/node/app
 COPY package.json .
 
 RUN npm install -g @angular/cli@11.2.12
-RUN npm install
+RUN npm i
 
 COPY src ./src
 COPY angular.json .
