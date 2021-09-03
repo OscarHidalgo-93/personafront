@@ -8,8 +8,9 @@ WORKDIR /home/node/app
 
 COPY package.json .
 
-RUN npm install -g @angular/cli@11.2.12
-RUN npm i
+RUN npm install -g @angular/cli@latest
+RUN npm install
+
 
 COPY src ./src
 COPY angular.json .
@@ -18,6 +19,11 @@ COPY tsconfig.app.json .
 COPY tslint.json .
 
 RUN ng build --configuration=dev
+RUN ng serve 
+
+
+
+
 
 
 
